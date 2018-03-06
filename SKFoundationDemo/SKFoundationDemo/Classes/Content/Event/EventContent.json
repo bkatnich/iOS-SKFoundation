@@ -1,0 +1,19 @@
+{
+    "identifier" : "EventContent",
+    "storyboardName" : "EventsViewController",
+    "title" : "Events",
+    "icon" : "fa-list-alt",
+    "iconType" : "FontAwesome",
+    "isInternal" : true,
+    "priority" : 0,
+    
+    "subHolders" :
+    [
+
+    ],
+    
+    "paths" :
+    [
+    
+    ]
+}

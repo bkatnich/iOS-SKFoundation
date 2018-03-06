@@ -1,0 +1,6 @@
+framework module Pods_SKFoundationDemo {
+  umbrella header "Pods-SKFoundationDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,2 +1,2 @@
-# iOS-SKFoundation
-SKFoundation is the foundation framework in SandKatt Solutions Inc.'s iOS application platform. 
+# SKFoundation
+The central foundation library of the SandKatt iOS pluggable platform
