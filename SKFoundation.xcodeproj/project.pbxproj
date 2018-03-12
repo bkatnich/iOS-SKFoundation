@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C2E511B3BE519AAA309769AF /* Pods_SKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4B708C6AE6E23C8CB293D1 /* Pods_SKFoundation.framework */; };
 		E407E6191FFB156300F2DE59 /* SKNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E407E6161FFB156300F2DE59 /* SKNetwork.swift */; };
+		E441EC022055F29900918ED1 /* SKFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = E441EC012055F29900918ED1 /* SKFramework.swift */; };
 		E44FC1C71FFF4D9800E3E7F9 /* SKFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44FC1C61FFF4D9800E3E7F9 /* SKFoundation.swift */; };
 		E47ADE4B2002D5930013974B /* SKRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ADE4A2002D5930013974B /* SKRouter.swift */; };
 		E49B4F53202B6D7600E56A3A /* SKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49B4F52202B6D7600E56A3A /* SKModel.swift */; };
@@ -23,6 +24,7 @@
 		899C754FF350203D7496F8F0 /* Pods-SKFoundation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFoundation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKFoundation/Pods-SKFoundation.debug.xcconfig"; sourceTree = "<group>"; };
 		BAA8A2F851AED8B61276CE46 /* Pods-SKFoundation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFoundation.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKFoundation/Pods-SKFoundation.release.xcconfig"; sourceTree = "<group>"; };
 		E407E6161FFB156300F2DE59 /* SKNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNetwork.swift; sourceTree = "<group>"; };
+		E441EC012055F29900918ED1 /* SKFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFramework.swift; sourceTree = "<group>"; };
 		E44FC1C61FFF4D9800E3E7F9 /* SKFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFoundation.swift; sourceTree = "<group>"; };
 		E47ADE4A2002D5930013974B /* SKRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKRouter.swift; sourceTree = "<group>"; };
 		E49B4F52202B6D7600E56A3A /* SKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKModel.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				E44FC1C61FFF4D9800E3E7F9 /* SKFoundation.swift */,
+				E441EC012055F29900918ED1 /* SKFramework.swift */,
 				E4E898F4201534630039A8E1 /* content */,
 				E49B4F4F202B6D2200E56A3A /* models */,
 				E4E898FF2015446F0039A8E1 /* network */,
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E441EC022055F29900918ED1 /* SKFramework.swift in Sources */,
 				E49B4F53202B6D7600E56A3A /* SKModel.swift in Sources */,
 				E4E976FD1FF983E000A493BD /* SKContentDataSource.swift in Sources */,
 				E4E976FC1FF983E000A493BD /* SKContentHolder.swift in Sources */,

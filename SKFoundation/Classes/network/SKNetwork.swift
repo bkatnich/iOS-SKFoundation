@@ -29,7 +29,7 @@ public struct SKNetwork : Codable, CustomDebugStringConvertible
     public var debugDescription : String
     {
         var desc: String = network.debugDescription
-            + debug.debugDescription
+            + "\n" + debug.debugDescription
             + "\n\n*** Url Paths ***\n\n"
         
         if self.paths.isEmpty
@@ -157,7 +157,7 @@ public struct SKDebugConfiguration : Codable, CustomDebugStringConvertible
      */
     public var debugDescription : String
     {
-        let desc: String = "offlineMode: \(offlineMode)"
+        let desc: String = "debug in offlineMode: \(offlineMode)"
         
         return desc
     }

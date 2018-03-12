@@ -15,7 +15,7 @@ public let log = SwiftyBeaver.self
 /**
  * SKFoundation is the core framework of the SandKatt iOS Platform.
  */
-public struct SKFoundation
+public class SKFoundation
 {
     // MARK: Properties
     
@@ -26,8 +26,8 @@ public struct SKFoundation
     // MARK: Lifecycle
     
     /**
-     * Start the initialization processes of the SKFoundation framework to provide common, shared
-     * services both inside and outside the framework.
+     * Start the initialization processes of the framework to provide common,
+     * shared services both inside and outside the framework.
      */
     public static func start()
     {
@@ -39,9 +39,14 @@ public struct SKFoundation
         log.addDestination(console)
         
         //
+        // Locate any further SKFrameworks and start them.
+        //
+        self.findSiblingFrameworks()
+        
+        //
         // Log startup state
         //
-        log.debug(self.debugStatus())
+        log.debug("\n\n" + self.debugStatus() + "\n\n")
     }
     
     
@@ -57,14 +62,74 @@ public struct SKFoundation
         //
         // Log startup state
         //
-        let debugStatus = "\nApp name: " + Bundle.main.appName() +
+        let debugStatus =
+            "-- Application --" +
+            "\n\nname: " + Bundle.main.appName() +
             "\nversion: " + Bundle.main.versionAndBuildNumber() +
-            "\nbuild Date: " + Bundle.main.buildDate() +
+            "\nbuild date: " + Bundle.main.buildDate() +
             "\norganization: " + Bundle.main.organization() +
+            
             "\n\n-- Network --\n\n" + network.debugDescription +
+            
             "\n\n\n-- Content --\n\n" + content.debugDescription
         
         return debugStatus
+    }
+    
+    
+    // MARK: -- Private --
+    
+    /**
+     *
+     */
+    private static func findSiblingFrameworks()
+    {
+        //log.debug("called")
+        
+        //
+        // Obtain all class information
+        //
+        let expectedClassCount = objc_getClassList(nil, 0)
+        let allClasses = UnsafeMutablePointer<AnyClass?>.allocate(capacity: Int(expectedClassCount))
+        let autoreleasingAllClasses = AutoreleasingUnsafeMutablePointer<AnyClass>(allClasses)
+        let actualClassCount:Int32 = objc_getClassList(autoreleasingAllClasses, expectedClassCount)
+
+        //log.debug("actual class count: \(actualClassCount)")
+    
+        //
+        // Iterate all discovered classes
+        //
+        for i in 0 ..< actualClassCount
+        {
+            //
+            // Retrieve each class
+            //
+            if let currentClass: AnyClass = allClasses[Int(i)]
+            {
+                //log.debug("retrieved class: \(currentClass)")
+                    
+                //
+                // Detect if the class comforms to the protocol
+                //
+                if class_conformsToProtocol(currentClass, SKFramework.self)
+                {
+                    //log.debug("found conforming class: \(currentClass)")
+                    
+                    //
+                    // Start the framework
+                    //
+                    let framework: SKFramework.Type = currentClass as! SKFramework.Type
+                    framework.start()
+                }
+            }
+        }
+
+        allClasses.deallocate(capacity: Int(expectedClassCount))
+        
+        //
+        // Notify interested observers
+        //
+        //NotificationCenter.default.post(name: .ContentHoldersLoaded, object: nil)
     }
 }
 
