@@ -125,11 +125,6 @@ public class SKFoundation
         }
 
         allClasses.deallocate(capacity: Int(expectedClassCount))
-        
-        //
-        // Notify interested observers
-        //
-        //NotificationCenter.default.post(name: .ContentHoldersLoaded, object: nil)
     }
 }
 
@@ -142,6 +137,7 @@ public class SKFoundation
 public enum SKError: Error
 {
     case apiCallFailed(title: String, detail: String)
+    case networkUrlNotConstructed(String)
     case serializationFailed(String)
 }
 
@@ -345,4 +341,9 @@ public extension Notification.Name
      * to the currently selected ContentHolder.
      */
     static let CurrentContentHolderSelectedChange = Notification.Name("CurrentContentHolderSelectedChange")
+
+    /**
+     * Static Notification.Name representing a Notification triggered when the network status changed.
+     */
+    static let NetworkStatusChanged = Notification.Name("NetworkStatusChanged")
 }

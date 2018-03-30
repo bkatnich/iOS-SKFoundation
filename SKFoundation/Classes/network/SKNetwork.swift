@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 
 /**
@@ -17,11 +18,21 @@ import Foundation
  */
 public struct SKNetwork : Codable, CustomDebugStringConvertible
 {
+    private enum CodingKeys: String, CodingKey
+    {
+        case debug
+        case network
+        case paths
+    }
+    
     // MARK: -- Properties --
     
     public var debug: SKDebugConfiguration?
     public var network: SKNetworkConfiguration?
     public var paths: [String : String] = [String : String]()
+    
+    private var networkManager: NetworkReachabilityManager?
+    
     
     /**
      * CustomDebugStringConvertible
@@ -87,7 +98,7 @@ public struct SKNetwork : Codable, CustomDebugStringConvertible
                 //
                 let jsonDecoder = JSONDecoder()
                 let network = try jsonDecoder.decode(SKNetwork.self, from: data)
-
+                
                 return network
             }
         }
@@ -139,6 +150,78 @@ public struct SKNetwork : Codable, CustomDebugStringConvertible
         let url = URL(string: path)
         
         return url
+    }
+    
+    
+    /**
+     * Retrieve if the network connection to the baseURL is reachable, or not.
+     *
+     * @return True if so, false if not.
+     */
+    public func isReachable() -> Bool
+    {
+        //
+        // If a manager based on the base url was established
+        //
+        if let manager = self.networkManager
+        {
+            //
+            // Ask the manager for the current network state
+            //
+            return manager.isReachable
+        
+        //
+        // Else no valid manager was instantiated
+        //
+        } else { return false }
+    }
+}
+
+public extension SKNetwork
+{
+    /**
+     * Decodable
+     */
+    init(from decoder: Decoder) throws
+    {
+        // Get our container for this subclass' coding keys
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.debug = (try? container.decode(SKDebugConfiguration.self, forKey: .debug)) ?? SKDebugConfiguration()
+        self.network = (try? container.decode(SKNetworkConfiguration.self, forKey: .network)) ?? SKNetworkConfiguration()
+        self.paths = (try? container.decode(Dictionary<String, String>.self, forKey: .debug)) ?? Dictionary<String, String>()
+    
+        //
+        // Setup the network reachability
+        //
+        if let url = self.baseUrl()?.description
+        {
+            self.networkManager = NetworkReachabilityManager(host: url)
+            self.networkManager?.listener = { status in
+        
+                //log.debug("Network: \(url) status change heard: \(status)")
+                
+                //
+                // Notify interested observers
+                //
+                NotificationCenter.default.post(name: .NetworkStatusChanged, object: nil)
+            }
+            self.networkManager?.startListening()
+        
+        } else { log.warning("network base url not found!!") }
+    }
+    
+    
+    /**
+     * Encodable
+     */
+    func encode(to encoder: Encoder) throws
+    {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+       
+        try container.encode(self.debug, forKey: .debug)
+        try container.encode(self.network, forKey: .network)
+        try container.encode(self.paths, forKey: .paths)
     }
 }
 

@@ -127,12 +127,31 @@ public class SKRouter: NSObject
      */
     public class func getAsDictionary(url: String, completion: @escaping DictionaryCompletionHandler)
     {
-        log.debug("called with url: " + url)
+        log.debug("called with url path: \(url) and base url is: \(String(describing: SKNetwork.shared().baseUrl()))")
+        
+        //
+        // Create full url
+        //
+        guard let baseUrl = SKNetwork.shared().baseUrl()?.absoluteString
+        else
+        {
+            let error: SKError = SKError.networkUrlNotConstructed(url)
+            
+            //
+            // Execute completion block
+            //
+            completion(nil, error)
+            
+            return
+        }
+        
+        let fullUrl = baseUrl + url
+        log.debug("full url: \(fullUrl)")
         
         //
         // Execute GET request with default validation (HTTP Codes 200-299)
         //
-        Alamofire.request(url).validate().responseJSON { response in
+        Alamofire.request(fullUrl).validate().responseJSON { response in
 
             //
             // Detect result code and respond accordingly
