@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import FontAwesome_swift
+import FontAwesome_swift
 
 
 /**
@@ -211,24 +211,9 @@ public struct SKContentDataHolder: SKContentHolder, Codable
             //
             case IconType.FontAwesome:
                 
-                /*return UIImage.fontAwesomeIcon(code: self.icon,
+                return UIImage.fontAwesomeIcon(code: self.icon,
                     textColor: UIColor.white,
-                    size: CGSize(width: 20, height: 20))*/
-            
-                let iconName = self.icon + self.iconType.rawValue
-                
-                //
-                // Specific bundle
-                //
-                if let bundle = Bundle.bundle(forContentHolder: self)
-                {
-                    return UIImage(named: iconName, in: bundle, compatibleWith: nil)
-                }
-            
-                //
-                // Default to main bundle
-                //
-                return UIImage(named: iconName)
+                    size: CGSize(width: 20, height: 20))
         }
     }
 }

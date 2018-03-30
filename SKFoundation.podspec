@@ -17,4 +17,12 @@ Thia is the central foundation library of the SandKatt iOS pluggable platform.
 
   s.swift_version = "4.0"
 
+  s.dependency "Alamofire"
+  s.dependency "AlamofireObjectMapper"
+  s.dependency "DeviceKit"
+  s.dependency "FontAwesome.swift"
+  s.dependency "Locksmith"
+  s.dependency "SwiftyBeaver"
+  s.dependency "SwiftyJSON"
+
 end

@@ -104,7 +104,6 @@
 		DD353EC42D2F8F63A1A2D072A9BC544A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 593BBB7B3FBE9DC3C722F231C6488EA5 /* Foundation.framework */; };
 		E1FDB8EB49DCBA9C697BF5EE4103D28A /* AlamofireObjectMapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 992BA628C364461DF7F450DB1C1356BA /* AlamofireObjectMapper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2B172D4B630FCBD7D61A3FA14892658 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B55536A5A330B0CBA546A08734CA48 /* TransformType.swift */; };
-		E42AA660202643F000CFAD9D /* SKFoundation.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = E42AA65F202643F000CFAD9D /* SKFoundation.xcworkspace */; };
 		EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162D738D8D2A04876C39503722F028B6 /* Notifications.swift */; };
 		F4A7D05B7F0F81C7A4E95E25E46AE3C2 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8A3EA5B1D936EC23A4E553DDC13B5B /* Filter.swift */; };
 		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024E95BAFFA4868830E27E1DD9833CC /* ResponseSerialization.swift */; };
@@ -335,7 +334,6 @@
 		DD24E2BC5199194DB69DFC835FB0A04E /* Enum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enum.swift; path = FontAwesome/Enum.swift; sourceTree = "<group>"; };
 		DEA5468010F3E9129964AEF22D708681 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF5C3E39A27D1944D83AD5724CD02F53 /* LocksmithSecurityClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocksmithSecurityClass.swift; path = Source/LocksmithSecurityClass.swift; sourceTree = "<group>"; };
-		E42AA65F202643F000CFAD9D /* SKFoundation.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; name = SKFoundation.xcworkspace; path = ../SKFoundation.xcworkspace; sourceTree = "<group>"; };
 		E8B55536A5A330B0CBA546A08734CA48 /* TransformType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformType.swift; path = Sources/TransformType.swift; sourceTree = "<group>"; };
 		EC3A3827F69F0A52CFC64CDB8D7258CC /* DeviceKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DeviceKit-prefix.pch"; sourceTree = "<group>"; };
 		ED932F207F495EA30A361E7B11BDFD4B /* Pods-SKFoundation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SKFoundation.modulemap"; sourceTree = "<group>"; };
@@ -577,7 +575,6 @@
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				E42AA65F202643F000CFAD9D /* SKFoundation.xcworkspace */,
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				B1E1D09C8DE6463809AB174100B00628 /* Frameworks */,
 				F1A9696FE45388635B15C5611FDE6FF7 /* Pods */,
@@ -1083,7 +1080,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EFA908CA9A3E9A800B618AC902F5990 /* FontAwesome.swift.bundle in Resources */,
-				E42AA660202643F000CFAD9D /* SKFoundation.xcworkspace in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
