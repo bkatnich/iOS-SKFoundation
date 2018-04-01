@@ -1,2 +1,11 @@
-# SKFoundation
-The central foundation library of the SandKatt iOS pluggable platform
+<p align="center"><img width=12.5% src="https://github.com/bkatnich/iOS-SKFoundation/blob/master/media/SandKattLogo.png"></p>
+<p align="center"><img width=60% src="https://github.com/bkatnich/iOS-SKFoundation/blob/master/media/SKFoundation.png"></p>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+## Basic Overview
+
+The core framework of the SandKatt platform of iOS frameworks.
+
+<br>
