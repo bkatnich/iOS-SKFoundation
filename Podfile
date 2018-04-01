@@ -5,11 +5,7 @@ use_frameworks!
 target 'SKFoundation' do
 
     pod 'Alamofire', '~> 4.6'
-    pod 'AlamofireObjectMapper', '~> 5.0'
-    pod 'DeviceKit'
     pod 'FontAwesome.swift'
-    pod 'Locksmith'
     pod 'SwiftyBeaver'
-    pod 'SwiftyJSON'
     
 end
