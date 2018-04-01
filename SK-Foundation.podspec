@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SK-Foundation"
-  s.version          = "0.2"
+  s.version          = "0.3"
   s.summary          = "The central foundation library of the SandKatt iOS pluggable platform."
 
   s.description      = <<-DESC
@@ -18,11 +18,7 @@ Thia is the central foundation library of the SandKatt iOS pluggable platform.
   s.swift_version = "4.0"
 
   s.dependency "Alamofire"
-  s.dependency "AlamofireObjectMapper"
-  s.dependency "DeviceKit"
   s.dependency "FontAwesome.swift"
-  s.dependency "Locksmith"
   s.dependency "SwiftyBeaver"
-  s.dependency "SwiftyJSON"
-
+  
 end
