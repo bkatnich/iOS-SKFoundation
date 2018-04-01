@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name             = "SKFoundation"
-  s.version          = "0.1"
+  s.name             = "SK-Foundation"
+  s.version          = "0.2"
   s.summary          = "The central foundation library of the SandKatt iOS pluggable platform."
 
   s.description      = <<-DESC
