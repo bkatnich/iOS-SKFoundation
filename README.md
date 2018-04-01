@@ -4,9 +4,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 [![Version](https://img.shields.io/cocoapods/v/SandKattFoundation.svg?style=flat)](http://cocoapods.org/pods/SandKattFoundation)
-![iOS 11.0](https://img.shields.io/badge/iOS-11.0%2B-blue.svg)
-![Swift 4.0](https://img.shields.io/badge/Swift-4.0%2B-orange.svg)
-![Xcode 9.0](https://img.shields.io/badge/Xcode-9.0%2B-blue.svg)
+![iOS 11.0](https://img.shields.io/badge/iOS-11.0%blue.svg)
+![Swift 4.0](https://img.shields.io/badge/Swift-4.0%orange.svg)
+![Xcode 9.0](https://img.shields.io/badge/Xcode-9.0%blue.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Basic Overview
