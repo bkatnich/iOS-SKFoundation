@@ -1,7 +1,6 @@
-<p align="center"><img width=20% src="https://github.com/bkatnich/iOS-SKFoundation/blob/master/media/SandKattLogo.png"></p>
-<p align="center"><img width=55% src="https://github.com/bkatnich/iOS-SKFoundation/blob/master/media/SKFoundation.png"></p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<p align="center">
+    <img width=50% src="https://github.com/bkatnich/iOS-SKFoundation/blob/master/media/SandKattLogo.png">
+</p>
 
 <p align="center">
     <a href="http://cocoapods.org/pods/SandKattFoundation">
@@ -14,6 +13,7 @@
     <img src="https://img.shields.io/badge/Xcode-9%2B-brightgreen.svg" alt="XCode 9+"/>
     <img src="https://img.shields.io/badge/licence-MIT-blue.svg" alt="Licence MIT"/>
 </p>
+
 
 ## Requirements
 
