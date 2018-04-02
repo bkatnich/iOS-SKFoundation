@@ -15,6 +15,11 @@
 </p>
 
 
+## Getting Started
+
+Coming Soon
+
+
 ## Requirements
 
 - Xcode 9.0+
@@ -32,10 +37,21 @@ The preferred installation method is with [CocoaPods](https://cocoapods.org). Ad
 pod 'SandKattFoundation'
 ```
 
- ## Credits
+## Usage
+
+Coming soon
+
+
+## Authors
 
 - Britton Katnich ([@bkatnich](https://github.com/bkatnich))
 
+
+## Acknowledgements
+
+Coming Soon
+
+
 ## License
 
-Windless is released under the MIT license. See LICENSE for details.
+SKFoundation is released under the MIT license. See LICENSE for details.
