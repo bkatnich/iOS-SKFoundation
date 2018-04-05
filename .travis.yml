@@ -1,4 +1,3 @@
 language: swift
-osx_image: xcode9
-script:
-    - xcodebuild clean test -project SKFoundation.xcworkspace -scheme SKFoundation -destination "platform=iOS Simulator,name=iPhone 8,OS=11.0" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+xcode_workspace: SKFoundation.xcworkspace
+xcode_scheme: SKFoundation
