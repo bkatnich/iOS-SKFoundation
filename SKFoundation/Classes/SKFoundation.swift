@@ -123,7 +123,7 @@ public class SKFoundation
             }
         }
 
-        allClasses.deallocate(capacity: Int(expectedClassCount))
+        allClasses.deallocate()
     }
 }
 
