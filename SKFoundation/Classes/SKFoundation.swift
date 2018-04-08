@@ -19,7 +19,7 @@ public class SKFoundation
 {
     // MARK: Properties
     
-    static var configurationInfo = SKFoundation.findConfiguration()
+    public static var configurationInfo = SKFoundation.findConfiguration()
     static var siblingFrameworks = SKFoundation.findSiblingFrameworks()
     
     

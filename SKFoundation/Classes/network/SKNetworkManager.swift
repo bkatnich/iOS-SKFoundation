@@ -170,8 +170,7 @@ public class SKNetworkManager : CustomDebugStringConvertible
     // MARK: -- Lifecycle --
     
     /**
-     * Default initializer which should never be used.  It will be called only in the case
-     * of failure to file and decode the appropriate.
+     * Private initializer to enforce singleton behaviour.
      */
     private init()
     {
