@@ -181,6 +181,48 @@ public class SKNetworkManager : CustomDebugStringConvertible
     // MARK: -- Public
     
     /**
+     * Retrieve the full url.
+     *
+     * @return String in URL format.
+     */
+    public class func fullUrl(urlPath: String) -> String?
+    {
+        //
+        // If already full URL, return it immediatley
+        //
+        if urlPath.starts(with: "http://") || urlPath.starts(with: "https://")
+        {
+            return urlPath
+        }
+        
+        //
+        // Find base url to construct full url
+        //
+        guard var baseUrl = SKNetworkManager.shared.baseUrl?.absoluteString
+        else
+        {
+            // base url not found
+            return nil
+        }
+        
+        //
+        // Detect if path starts with proper seperator
+        //
+        if !urlPath.hasPrefix("/")
+        {
+            // add seperator
+            baseUrl.append("/")
+        }
+        
+        //
+        // Put base url and url path together
+        //
+        baseUrl.append(urlPath)
+        
+        return baseUrl
+    }
+    
+    /**
      *
      */
     public func startListening()
@@ -196,7 +238,7 @@ public class SKNetworkManager : CustomDebugStringConvertible
         self.networkManager = NetworkReachabilityManager(host: baseUrl)
         self.networkManager?.listener = { status in
         
-            //log.debug("Network: \(baseUrl) status change heard: \(status)")
+            log.debug("Network: \(baseUrl) status change heard: \(status)")
             
             //
             // Notify interested observers
@@ -228,9 +270,24 @@ public class SKNetworkManager : CustomDebugStringConvertible
         //log.debug("called with url: \(url)")
         
         //
+        // Retrieve properly constructed URL
+        //
+        guard let fullUrl = SKNetworkManager.fullUrl(urlPath: url)
+        else
+        {
+            let error: SKError = SKError.networkUrlNotConstructed(url)
+            
+            //
+            // Execute completion block
+            //
+            completion(false, error)
+            return
+        }
+        
+        //
         // Execute DELETE request with default validation (HTTP Codes 200-299)
         //
-        Alamofire.request(url, method: .delete).response { response in
+        Alamofire.request(fullUrl, method: .delete).response { response in
     
             log.debug("response heard")
             
@@ -266,9 +323,24 @@ public class SKNetworkManager : CustomDebugStringConvertible
         //log.debug("called with url: " + url)
         
         //
+        // Retrieve properly constructed URL
+        //
+        guard let fullUrl = SKNetworkManager.fullUrl(urlPath: url)
+        else
+        {
+            let error: SKError = SKError.networkUrlNotConstructed(url)
+            
+            //
+            // Execute completion block
+            //
+            completion(nil, error)
+            return
+        }
+        
+        //
         // Execute GET request with default validation (HTTP Codes 200-299)
         //
-        Alamofire.request(url).validate().responseJSON { response in
+        Alamofire.request(fullUrl).validate().responseJSON { response in
 
             //
             // Detect result code and respond accordingly
@@ -280,6 +352,8 @@ public class SKNetworkManager : CustomDebugStringConvertible
                 //
                 case .success:
                 
+                    log.debug("Success heard: " + String(describing:response.result.value))
+                    
                     if let array: Array<AnyObject> = response.result.value as? Array<AnyObject>
                     {
                         completion(array, nil)
@@ -316,25 +390,22 @@ public class SKNetworkManager : CustomDebugStringConvertible
      */
     public class func getAsDictionary(url: String, completion: @escaping DictionaryCompletionHandler)
     {
-        //log.debug("called with url path: \(url) and base url is: \(String(describing: SKNetwork.shared().baseUrl))")
+        log.debug("called with url path: \(url) and base url is: \(String(describing: SKNetworkManager.shared.baseUrl))")
         
         //
-        // Create full url
+        // Retrieve properly constructed URL
         //
-        guard let baseUrl = SKNetworkManager.shared.baseUrl?.absoluteString
+        guard let fullUrl = SKNetworkManager.fullUrl(urlPath: url)
         else
         {
             let error: SKError = SKError.networkUrlNotConstructed(url)
-         
+            
             //
             // Execute completion block
             //
             completion(nil, error)
-         
             return
         }
-        
-        let fullUrl = baseUrl + url
         
         //
         // Execute GET request with default validation (HTTP Codes 200-299)
@@ -351,8 +422,8 @@ public class SKNetworkManager : CustomDebugStringConvertible
                 //
                 case .success:
          
-                    //log.debug("Success heard: " + String(describing:response.result))
-         
+                    log.debug("Success heard: " + String(describing:response.result.value))
+                    
                     //
                     // Dictionary case
                     //
@@ -361,17 +432,19 @@ public class SKNetworkManager : CustomDebugStringConvertible
                         completion(info, nil)
                         return
                     }
-         
+                    
                     break
         
                 //
                 // Failure (everything else)
                 //
                 case .failure(let error):
-         
+            
+                    let detail = "URL: \(fullUrl), Data: \(String(data: (response.data)!, encoding: .utf8)!)"
+                    
                     let error: SKError = SKError.apiCallFailed(
                         title: error.localizedDescription,
-                        detail: String(data: (response.data)!, encoding: .utf8)!)
+                        detail: detail)
          
                     //
                     // Execute completion block
@@ -392,9 +465,24 @@ public class SKNetworkManager : CustomDebugStringConvertible
     public class func postTo(url: String, parameters: Dictionary<String, Any>, completion: @escaping DictionaryCompletionHandler)
     {
         //
+        // Retrieve properly constructed URL
+        //
+        guard let fullUrl = SKNetworkManager.fullUrl(urlPath: url)
+        else
+        {
+            let error: SKError = SKError.networkUrlNotConstructed(url)
+            
+            //
+            // Execute completion block
+            //
+            completion(nil, error)
+            return
+        }
+        
+        //
         // Execute POST request with default validation (HTTP Codes 200-299)
         //
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request(fullUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
     
             //
             // Detect result code and respond accordingly
@@ -448,9 +536,24 @@ public class SKNetworkManager : CustomDebugStringConvertible
         //log.debug("called with url: " + url)
         
         //
+        // Retrieve properly constructed URL
+        //
+        guard let fullUrl = SKNetworkManager.fullUrl(urlPath: url)
+        else
+        {
+            let error: SKError = SKError.networkUrlNotConstructed(url)
+            
+            //
+            // Execute completion block
+            //
+            completion(nil, error)
+            return
+        }
+        
+        //
         // Execute POST request with default validation (HTTP Codes 200-299)
         //
-        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request(fullUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
     
             //
             // Detect result code and respond accordingly
@@ -504,9 +607,24 @@ public class SKNetworkManager : CustomDebugStringConvertible
         //log.debug("called with url: " + url)
         
         //
+        // Retrieve properly constructed URL
+        //
+        guard let fullUrl = SKNetworkManager.fullUrl(urlPath: url)
+        else
+        {
+            let error: SKError = SKError.networkUrlNotConstructed(url)
+            
+            //
+            // Execute completion block
+            //
+            completion(nil, error)
+            return
+        }
+        
+        //
         // Execute GET request with default validation (HTTP Codes 200-299)
         //
-        Alamofire.request(url).validate().responseJSON { response in
+        Alamofire.request(fullUrl).validate().responseJSON { response in
     
             //
             // Detect result code and respond accordingly
